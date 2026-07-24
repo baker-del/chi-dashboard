@@ -14,6 +14,10 @@ users:
     role: all
     display_name: Eric Gregg
 
+  baker@clearlyrated.com:
+    role: all
+    display_name: Baker Nanduru
+
   zachary.panos@clearlyrated.com:
     role: csm
     display_name: Zach Panos
