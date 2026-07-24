@@ -22,6 +22,10 @@ def _pendo_headers():
     return {"x-pendo-integration-key": key, "content-type": "application/json"}
 
 
+def _pendo_available() -> bool:
+    return bool(os.getenv("PENDO_API_KEY"))
+
+
 def _normalize(name: str) -> str:
     if not name:
         return ""
@@ -43,6 +47,8 @@ def get_pendo_account_stats() -> dict[str, dict]:
                                 used to compute unique user counts for any window
         pendo_account_id      — Pendo internal account ID
     """
+    if not _pendo_available():
+        return {}
     headers = _pendo_headers()
 
     # Pull all accounts
@@ -196,6 +202,8 @@ def get_pendo_page_analytics(days: int = 90) -> dict[str, dict]:
         }
     Results are cached to disk for 12 hours.
     """
+    if not _pendo_available():
+        return {}
     cache_key = f"days_{days}"
     try:
         with open(PAGE_CACHE_PATH) as f:

@@ -17,6 +17,10 @@ def _campfire_headers():
     return {"Authorization": f"Token {key}", "Content-Type": "application/json"}
 
 
+def _campfire_available() -> bool:
+    return bool(os.getenv("CAMPFIRE_API_KEY"))
+
+
 def _normalize(name: str) -> str:
     if not name:
         return ""
@@ -71,6 +75,8 @@ def save_mappings(mappings: dict, disregarded_hubspot: list, disregarded_campfir
 
 
 def _fetch_all_contracts() -> list:
+    if not _campfire_available():
+        return []
     contracts = []
     url = f"{CAMPFIRE_BASE}/rr/api/v1/contracts"
     params = {"limit": 100}
@@ -110,6 +116,8 @@ def _campfire_get(url, params=None) -> requests.Response:
 
 def _fetch_all_invoices() -> list:
     """Fetch all invoices from Campfire with retry on transient errors."""
+    if not _campfire_available():
+        return []
     invoices = []
     url = f"{CAMPFIRE_BASE}/coa/api/v1/invoice/"
     params = {"limit": 100, "sort": "-due_date"}
