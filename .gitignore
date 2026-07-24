@@ -1,0 +1,15 @@
+.env
+.streamlit/secrets.toml
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.DS_Store
+*.egg-info/
+dist/
+build/
+data/cache.json
+data/pendo_pages_cache.json
+data/preferences.json
+data/unmatched_hubspot_accounts.csv
+data/unmatched_campfire_clients.csv

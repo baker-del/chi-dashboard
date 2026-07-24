@@ -1,0 +1,58 @@
+# CHI Dashboard — User Access Config
+#
+# Roles:
+#   all    — sees all CSMs, full filter access
+#   csm    — sees only their own accounts + team benchmarks; hubspot_name must match
+#            their name exactly as it appears in the HubSpot owner list
+#   subset — sees a defined list of CSMs; list them under allowed_csms
+#
+# To add a user: add their @clearlyrated.com email and set role + display_name.
+# To remove a user: delete or comment out their entry.
+
+users:
+  egregg@clearlyrated.com:
+    role: all
+    display_name: Eric Gregg
+
+  zachary.panos@clearlyrated.com:
+    role: csm
+    display_name: Zach Panos
+    hubspot_name: Zach Panos
+
+  zach.hankin@clearlyrated.com:
+    role: csm
+    display_name: Zach Hankin
+    hubspot_name: Zach Hankin
+
+  amber.moreno@clearlyrated.com:
+    role: csm
+    display_name: Amber Moreno
+    hubspot_name: Amber Moreno
+
+  scheri.smith@clearlyrated.com:
+    role: csm
+    display_name: Scheri Smith
+    hubspot_name: Scheri Smith
+
+  kirsten.handal@clearlyrated.com:
+    role: csm
+    display_name: Kirsten Handal
+    hubspot_name: Kirsten Handal
+
+  bernardo.mattos@clearlyrated.com:
+    role: csm
+    display_name: Bernardo Mattos
+    hubspot_name: Bernardo Mattos
+
+  jenni.schwittay@clearlyrated.com:
+    role: csm
+    display_name: Jenni Schwittay
+    hubspot_name: Jenni Schwittay
+
+  # Example: CEO with access to specific CSMs only
+  # ceo@clearlyrated.com:
+  #   role: subset
+  #   display_name: CEO Name
+  #   allowed_csms:
+  #     - Amber Moreno
+  #     - Zach Panos
